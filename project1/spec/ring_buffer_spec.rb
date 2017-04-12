@@ -71,6 +71,7 @@ describe RingBuffer do
       arr.unshift(i)
     end
 
+
     5.times do |i|
       expect(arr[i]).to eq(4-i)
       expect(arr[i+5]).to eq(i)
