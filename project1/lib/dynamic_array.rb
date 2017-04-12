@@ -39,12 +39,31 @@ class DynamicArray
   # O(n): has to shift over all the elements.
   def shift
     raise "index out of bounds" if @length == 0
-
+    shifted_el = @store[0]
+    new_store = StaticArray.new(@capacity)
+    (1...@length).each do |i|
+      new_store[i - 1] = @store[i]
+    end
+    @store = new_store
     @length -= 1
+    shifted_el
   end
 
   # O(n): has to shift over all the elements.
   def unshift(val)
+    if (@length == @capacity)
+      @capacity *= 2
+    end
+
+    new_store = StaticArray.new(@capacity)
+    new_store[0] = val
+
+    (0...@length).each do |i|
+      new_store[i + 1] = @store[i]
+    end
+    
+    @length += 1
+    @store = new_store
   end
 
   protected

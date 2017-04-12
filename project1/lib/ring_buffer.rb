@@ -12,14 +12,19 @@ class RingBuffer
 
   # O(1)
   def [](index)
+    check_index(index)
   end
 
   # O(1)
   def []=(index, val)
+    check_index(index)
   end
 
   # O(1)
   def pop
+    raise "index out of bounds" if @length == 0
+    @length -= 1
+    @store[@length]
   end
 
   # O(1) ammortized
@@ -28,6 +33,8 @@ class RingBuffer
 
   # O(1)
   def shift
+    raise "index out of bounds" if @length == 0
+
   end
 
   # O(1) ammortized
@@ -39,6 +46,7 @@ class RingBuffer
   attr_writer :length
 
   def check_index(index)
+    raise "index out of bounds" if index > @length - 1
   end
 
   def resize!
