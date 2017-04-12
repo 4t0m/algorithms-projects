@@ -7,13 +7,13 @@ class StaticArray
 
   # O(1)
   def [](index)
-    raise "index out of range" if index > @length - 1
+    raise "index out of bounds" if index > @length - 1
     @store[index]
   end
 
   # O(1)
   def []=(index, value)
-    raise "index out of range" if index > @length - 1
+    raise "index out of bounds" if index > @length - 1
     @store[index] = value
   end
 
