@@ -208,6 +208,7 @@ describe DynamicArray do
   describe "negative indexing" do
     it "should perform negative indexing correctly" do
       (1..5).each { |n| arr.push(n) }
+      puts arr
       expect(arr[-1]).to eq(5)
       expect(arr[-6]).to be_nil
       arr.shift
