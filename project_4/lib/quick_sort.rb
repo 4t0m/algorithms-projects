@@ -12,11 +12,14 @@ class QuickSort
 
   # In-place.
   def self.sort2!(array, start = 0, length = array.length, &prc)
-    return array if array.length <= 1
+    return array if length <= 1
     prc ||= proc { |el1, el2| el1 <=> el2 }
+
     pivot_idx = self.partition(array, start, length, &prc)
-    self.partition(array, start, pivot_idx, &prc)
-    self.partition(array, pivot_idx, (array.length - pivot_idx), &prc)
+    left_length = pivot_idx - start
+    right_length = length - left_length - 1
+    self.sort2!(array, start, left_length, &prc)
+    self.sort2!(array, pivot_idx + 1, right_length, &prc)
     array
   end
 
