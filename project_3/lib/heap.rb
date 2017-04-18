@@ -54,7 +54,7 @@ class BinaryMinHeap
       return array
     end
 
-		self.heapify_down(array, child_idx, &prc)
+		self.heapify_down(array, child_idx, len, &prc)
   end
 
   def self.heapify_up(array, child_idx, len = array.length, &prc)
@@ -68,6 +68,6 @@ class BinaryMinHeap
       return array
     end
 
-    self.heapify_up(array, parent_idx, &prc)
+    self.heapify_up(array, parent_idx, len, &prc)
   end
 end
