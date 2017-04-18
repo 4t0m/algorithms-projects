@@ -14,9 +14,10 @@ class QuickSort
   def self.sort2!(array, start = 0, length = array.length, &prc)
     return array if array.length <= 1
     prc ||= proc { |el1, el2| el1 <=> el2 }
-    array.partition(array, start, length, &prc)
-
-
+    pivot_idx = self.partition(array, start, length, &prc)
+    self.partition(array, start, pivot_idx, &prc)
+    self.partition(array, pivot_idx, (array.length - pivot_idx), &prc)
+    array
   end
 
   def self.partition(array, start, length, &prc)
