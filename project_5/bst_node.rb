@@ -1,7 +1,7 @@
 class BSTNode
-  attr_accessor :val
+  attr_accessor :val, :left, :right
 
-  def initialize(val)
+  def initialize(val = nil)
     @val = val
     @parent = nil
     @left = nil
