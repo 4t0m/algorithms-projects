@@ -4,13 +4,25 @@
 # then clean out the caches you use.  You can also change the inputs to include a cache that you pass from call to call.
 
 class DPProblems
+  attr_accessor :fibonacci_cache
+
   def initialize
-    # Use this to create any instance variables you may need
+    @fibonacci_cache = { 1 => 1, 2 => 1 }
   end
 
   # Takes in a positive integer n and returns the nth Fibonacci number
   # Should run in O(n) time
   def fibonacci(n)
+    ans = fibonacci_helper(n)
+    # resetting cache on every call for testing purposes
+    @fibonacci_cache = { 1 => 1, 2 => 1 }
+    ans
+  end
+
+  def fibonacci_helper(n)
+    return @fibonacci_cache[n] if @fibonacci_cache[n]
+    next_fib = fibonacci_helper(n - 1) + fibonacci_helper(n - 2)
+    @fibonacci_cache[n] = next_fib
   end
 
   # Make Change: write a function that takes in an amount and a set of coins.  Return the minimum number of coins
