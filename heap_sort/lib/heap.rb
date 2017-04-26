@@ -41,15 +41,15 @@ class BinaryMinHeap
     prc ||= proc { |el1, el2| el1 <=> el2 }
 		child_indices = self.child_indices(len, parent_idx)
 		children = child_indices.map { |i| array[i] }
-	  sorted = children.sort(&prc)
+    min = children.min(&prc)
+    
+    return array if children.empty?
 
-    return array if sorted.empty?
-
-    case prc.call(sorted[0], array[parent_idx])
+    case prc.call(min, array[parent_idx])
     when -1
-      child_idx = array.index(sorted[0])
+      child_idx = array.index(min)
       array[child_idx] = array[parent_idx]
-  		array[parent_idx] = sorted[0]
+  		array[parent_idx] = min
     else
       return array
     end
