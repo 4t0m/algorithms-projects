@@ -20,6 +20,8 @@ class DPProblems
   end
 
   def fibonacci_helper(n)
+    # recurse and add to cache in helper method so that cache can be reset in the
+    # main call, after the loop
     return @fibonacci_cache[n] if @fibonacci_cache[n]
     next_fib = fibonacci_helper(n - 1) + fibonacci_helper(n - 2)
     @fibonacci_cache[n] = next_fib
