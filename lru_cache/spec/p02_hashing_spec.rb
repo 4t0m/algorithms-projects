@@ -29,7 +29,7 @@ describe "Hashing" do
       expect(a.hash).not_to eq(b.hash)
     end
 
-    it "should handle empty arrays" do
+    it "should handle empty arrays" do 
       expect([].hash).to be_a(Integer)
     end
   end
