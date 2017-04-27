@@ -7,7 +7,7 @@ describe "Hashing" do
       expect([1,2].hash).to be_a(Integer)
     end
 
-    it "should hash deterministically" do
+    it "should hash deterministically" do 
       a = [1, 2, 3]
       expect(a.hash).to eq(a.hash)
     end
