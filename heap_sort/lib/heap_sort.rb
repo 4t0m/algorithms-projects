@@ -7,6 +7,7 @@ class Array
     end
 
     heap_end_index = self.length - 1
+    
     until heap_end_index == 0
       self[0], self[heap_end_index] = self[heap_end_index], self[0]
       BinaryMinHeap.heapify_down(self, 0, heap_end_index) { |el1, el2| el2 <=> el1 }
