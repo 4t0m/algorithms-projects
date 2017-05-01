@@ -42,11 +42,10 @@ class BinaryMinHeap
 		child_indices = self.child_indices(len, parent_idx)
 		children = child_indices.map { |i| array[i] }
     min = children.min(&prc)
-    
+
     return array if children.empty?
 
-    case prc.call(min, array[parent_idx])
-    when -1
+    if prc.call(min, array[parent_idx]) == -1
       child_idx = array.index(min)
       array[child_idx] = array[parent_idx]
   		array[parent_idx] = min
@@ -60,9 +59,9 @@ class BinaryMinHeap
   def self.heapify_up(array, child_idx, len = array.length, &prc)
     prc ||= proc { |el1, el2| el1 <=> el2 }
     return array if child_idx == 0
+
     parent_idx = self.parent_index(child_idx)
-    case prc.call(array[parent_idx], array[child_idx])
-    when 1
+    if prc.call(array[parent_idx], array[child_idx]) == 1
       array[parent_idx], array[child_idx] = array[child_idx], array[parent_idx]
     else
       return array
