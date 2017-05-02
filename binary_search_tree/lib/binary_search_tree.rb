@@ -1,4 +1,4 @@
-require './bst_node.rb'
+require 'bst_node'
 
 class BinarySearchTree
   attr_accessor :root
