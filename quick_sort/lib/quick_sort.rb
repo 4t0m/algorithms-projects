@@ -1,6 +1,7 @@
 class QuickSort
   # Quick sort has average case time complexity O(nlogn), but worst
   # case O(n**2).
+	# TODO use random index for pivot instead of first
 
   # Not in-place. Uses O(n) memory.
   def self.sort1(array)
@@ -27,12 +28,9 @@ class QuickSort
     prc ||= proc { |el1, el2| el1 <=> el2 }
     partition_idx = start
     ((start + 1)...(start + length)).each do |index|
-      if prc.call(array[start], array[index]) == -1
-        next
-      else
-        partition_idx += 1
-        array[partition_idx], array[index] = array[index], array[partition_idx]
-      end
+      next if prc.call(array[start], array[index]) == -1
+			partition_idx += 1
+			array[partition_idx], array[index] = array[index], array[partition_idx]
     end
 
     array[start], array[partition_idx] = array[partition_idx], array[start]
