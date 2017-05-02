@@ -1,4 +1,4 @@
-require 'bst_node.rb'
+require './bst_node.rb'
 
 class BinarySearchTree
   attr_accessor :root
@@ -8,9 +8,13 @@ class BinarySearchTree
   end
 
   def find(el)
+
   end
 
   def insert(el)
+		return @root = el if @root == nil
+		insert_helper(@root, el)
+		el
   end
 
   def delete(el)
@@ -27,4 +31,21 @@ class BinarySearchTree
 
   def depth
   end
+
+	private 
+	def insert_helper(current_root, el)
+		if el.val < current_root.val
+			if current_root.left == nil
+				current_root.left = el
+			else
+				insert_helper(current_root.left, el)
+			end
+		else
+			if current_root.right == nil
+				current_root.right = el
+			else
+				insert_helper(current_root.right, el)
+			end
+		end
+	end
 end
