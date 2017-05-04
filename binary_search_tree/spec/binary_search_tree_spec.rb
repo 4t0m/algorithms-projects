@@ -13,22 +13,26 @@ describe BinarySearchTree do
 		end
 	end
 
-	
-	context "insertion" do 
+
+	context "insertion" do
 		it "sets first inserted node as root" do
 			tree.insert(node2)
 			expect(tree.root).to eq(node2)
 		end
 
 		it "inserts elements on the correct side of the root" do
+			tree.insert(node2)
 			tree.insert(node1)
-	#		tree.insert(node3)
+			tree.insert(node3)
 
 			expect(node2.left).to eq(node1)
 			expect(node2.right).to eq(node3)
 		end
 
-		it "inserts elements recursively" do 
+		it "inserts elements recursively" do
+			tree.insert(node2)
+			tree.insert(node1)
+			tree.insert(node3)
 			tree.insert(node4)
 			expect(node3.right).to eq(node4)
 		end
