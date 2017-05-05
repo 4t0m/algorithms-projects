@@ -34,7 +34,7 @@ class BinarySearchTree
 
 	private 
 	def insert_helper(current_root, el)
-		if el.val < current_root.val || el.val == current_root.val
+		if el.val <= current_root.val
 			if current_root.left == nil
 				current_root.left = el
 			else
