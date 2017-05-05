@@ -8,7 +8,7 @@ class BinarySearchTree
   end
 
   def find(el)
-
+		find_helper(@root, el)
   end
 
   def insert(el)
@@ -47,5 +47,11 @@ class BinarySearchTree
 				insert_helper(current_root.right, el)
 			end
 		end
+	end
+
+	def find_helper(current_root, el)
+		return false unless current_root
+
+		current_root.val == el || find_helper(current_root.left, el) || find_helper(current_root.right, el)
 	end
 end
