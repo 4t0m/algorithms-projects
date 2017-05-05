@@ -33,7 +33,16 @@ describe BinarySearchTree do
 			tree.insert(node1)
 			tree.insert(node3)
 			tree.insert(node4)
+			
 			expect(node3.right).to eq(node4)
+		end
+
+		it "inserts duplicate elements" do
+			tree.insert(node2)
+			tree.insert(node1)
+			tree.insert(node1)
+		
+			expect(node1.left).to eq(node1)
 		end
 	end
 
