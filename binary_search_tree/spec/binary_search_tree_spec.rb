@@ -70,7 +70,13 @@ describe BinarySearchTree do
 			expect(tree.find(4)).to be true
 		end
 
+		it "does not find an element in empty tree" do
+			expect(tree.find(1)).to be false
+		end
+
 		it "does not find an element that has not been inserted" do
+			tree.insert(node2)
+
 			expect(tree.find(1)).to be false
 		end
 	end
